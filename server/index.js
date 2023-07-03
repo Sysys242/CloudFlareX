@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
+app.use(bodyParser.json());
 const port = 3000;
 
 var fp = {
@@ -1843,14 +1844,14 @@ x = function (a4, e, f, z) {
 
 // thanks to vichy
 app.post('/wp', (req, res) => {
-    const K = req.body;
-    console.log(K)
+    console.log(req.body.pass)
+    const K = req.body.pass;
     var d = new Date();
     var n = d.getHours();
     var m = d.getMinutes();
     var s = d.getSeconds();
     console.log(`Time: ${n}:${m}:${s}`)
-    var p = x['KKaDhraVI'](JSON.stringify(fp).replace("17:03:56", `${n}:${m}:${s}`),book.pass)
+    var p = x['KKaDhraVI'](JSON.stringify(fp).replace("17:03:56", `${n}:${m}:${s}`), K)
     res.send(p);
 });
 
